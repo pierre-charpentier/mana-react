@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import { Container, Image, Menu } from 'semantic-ui-react'
 import './style.css'
 import logo from './logo.svg';
 

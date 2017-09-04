@@ -10,9 +10,9 @@ class App extends Component {
         <div className="App">
           <NavigationBar />
           <Switch>
-            <Route exact path='/' component={Agenda} />
-            <Route path='/agenda' component={Agenda} />
-            <Route path='/grades' component={Grades} />
+            <Route exact path='/' component={ Agenda } />
+            <Route path='/agenda' component={ Agenda } />
+            <Route path='/grades' component={ Grades } />
           </Switch>
         </div>
     );

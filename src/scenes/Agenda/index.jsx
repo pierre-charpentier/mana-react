@@ -6,7 +6,7 @@ class Agenda extends Component {
   state = {  }
   render() {
     return (
-      <Container style={{ marginTop: '7em' }}>
+      <Container style={{ marginTop: '7em', paddingBottom: '3em' }}>
         <Header as='h1'>
           <Icon name='calendar' />
           <Header.Content>
