@@ -9,7 +9,8 @@ class Calendar extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3000/calendar/1472/byDay?projectId=4&firstDate=2017-09-01&lastDate=2017-12-30').then((response) => response.json()).then((responseJSON) => {
+    console.log(api);
+    fetch(process.env.REACT_APP_BASE_API_URL + '/calendar/1472/byDay?projectId=4&firstDate=2017-09-01&lastDate=2017-12-30').then((response) => response.json()).then((responseJSON) => {
       this.setState({ events: responseJSON });
     })
   }
