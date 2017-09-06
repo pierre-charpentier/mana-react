@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import { Table } from 'semantic-ui-react'
-import Moment from 'moment'
+import React, { Component } from 'react';
+import { Table } from 'semantic-ui-react';
+import Moment from 'moment';
 
 class Calendar extends Component {
   state = {
-    events: {},
-    event: {"type":"VEVENT","params":[],"dtstamp":"20170831T060544Z","start":"2016-09-06T07:30:00.000Z","end":"2016-09-06T07:45:00.000Z","summary":"P. Louis Dit Picard - Exposé Retour d'entreprise","location":"004H","description":"\nIMR2 sortants\nCARADEC N\nTHION V.\nALAIN P.\n(Exporté le:31/08/2017 08:05)","uid":"ADE60456d706c6f6973647574656d7073323031362d323031372d343439392d302d30","created":"19700101T000000Z","last-modified":"20170831T060544Z","sequence":"1724329144"}
+    events: {}
   }
 
   componentWillMount() {
@@ -34,6 +33,7 @@ class Calendar extends Component {
             startTime = Moment(event.start).format("HH:mm"),
             location = event.location.split('-')[0],
             lessonTitle = event.summary,
+            teachers = event.teachers,
             lessonDisabled = Moment().isAfter(Moment(event.start));
 
         rows.push(
@@ -42,7 +42,7 @@ class Calendar extends Component {
             <Table.Cell colSpan='1' textAlign='left'>{ diff }</Table.Cell>
             <Table.Cell colSpan='1' textAlign='left' style={{fontWeight: 'bold'}}>{ location }</Table.Cell>
             <Table.Cell colSpan='8' textAlign='left'>{ lessonTitle }</Table.Cell>
-            <Table.Cell colSpan='5' textAlign='left'>Mr. CAIGNAERT</Table.Cell>
+            <Table.Cell colSpan='5' textAlign='left'>{ teachers.join(', ') }</Table.Cell>
           </Table.Row>
         );
       }
