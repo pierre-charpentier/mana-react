@@ -15,10 +15,10 @@ class NavigationBar extends Component {
               src={logo}
               style={{ marginRight: '1.5em' }}
             />
-            Enss'app
+            Mana
           </Menu.Item>
           <Menu.Item as='a' href="/agenda">Agenda</Menu.Item>
-          <Menu.Item as='a' href="/grades">Grades</Menu.Item>
+          <Menu.Item as='a' href="/grades" disabled>Grades</Menu.Item>
         </Container>
       </Menu>
     );
