@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Loader, Dimmer } from 'semantic-ui-react';
 import Moment from 'moment';
 
 class Calendar extends Component {
   state = {
-    events: {}
-  }
+    events: {},
+    isLoading: true,
+  };
 
   componentWillMount() {
     fetch(process.env.REACT_APP_BASE_API_URL + '/calendar/1472/byDay?projectId=4&firstDate=2017-09-01&lastDate=2017-12-30').then((response) => response.json()).then((responseJSON) => {
-      this.setState({ events: responseJSON });
-    })
-  }
+      this.setState({ events: responseJSON, isLoading: false });
+    });
+  };
 
-  generateTable = () => {
+  generateCalendar = () => {
     let tables = [];
 
     let keys = Object.keys(this.state.events);
@@ -48,7 +49,7 @@ class Calendar extends Component {
       }
 
       tables.push(
-        <Table key={ day } celled attached fixed padded disabled={ dayDisabled }>
+        <Table key={ day } attached fixed padded disabled={ dayDisabled }>
           <Table.Header>
             <Table.Row negative>
               <Table.HeaderCell colSpan='16'>{ Moment(day).format('dddd, DD MMMM YYYY') }</Table.HeaderCell>
@@ -70,7 +71,10 @@ class Calendar extends Component {
   render() {
     let calendar = (
       <div>
-        {this.generateTable()}
+      <Dimmer active={ this.state.isLoading }>
+          <Loader active={ this.state.isLoading } size='huge'>Loading calendar...</Loader>
+      </Dimmer>
+      { this.generateCalendar() }
       </div>
     )
 
