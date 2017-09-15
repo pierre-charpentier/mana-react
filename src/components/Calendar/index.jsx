@@ -9,7 +9,10 @@ class Calendar extends Component {
   };
 
   componentWillMount() {
-    fetch(process.env.REACT_APP_BASE_API_URL + '/calendar/1472/byDay?projectId=4&firstDate=2017-09-01&lastDate=2017-12-30').then((response) => response.json()).then((responseJSON) => {
+    const now = Moment();
+    const inThreeMonths = Moment(now).add(3, 'month');
+
+    fetch(process.env.REACT_APP_BASE_API_URL + '/calendar/1472/byDay?projectId=4&firstDate=' + now.format('YYYY-MM-DD') + '&lastDate=' + inThreeMonths.format('YYYY-MM-DD')).then((response) => response.json()).then((responseJSON) => {
       this.setState({ events: responseJSON, isLoading: false });
     });
   };
@@ -35,7 +38,7 @@ class Calendar extends Component {
             location = event.location.split('-')[0],
             lessonTitle = event.summary,
             teachers = event.teachers,
-            lessonDisabled = Moment().isAfter(Moment(event.start));
+            lessonDisabled = Moment().isAfter(Moment(event.end));
 
         rows.push(
           <Table.Row key={ uid } disabled={ lessonDisabled }>
