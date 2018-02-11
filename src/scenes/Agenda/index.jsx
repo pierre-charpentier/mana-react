@@ -24,4 +24,4 @@ class Agenda extends Component {
   }
 }
 
-export default Agenda;  
+export default Agenda
