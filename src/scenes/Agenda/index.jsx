@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
-import { Container, Header, Icon } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { Container, Header, Icon } from 'semantic-ui-react'
 import Calendar from '../../components/Calendar'
 
 class Agenda extends Component {
-  state = {  }
-  render() {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  render () {
     return (
       <Container style={{ marginTop: '7em', paddingBottom: '3em' }}>
         <Header as='h1'>
@@ -15,7 +20,7 @@ class Agenda extends Component {
         </Header>
         <Calendar />
       </Container>
-    );
+    )
   }
 }
 
