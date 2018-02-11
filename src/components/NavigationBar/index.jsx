@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Container, Image, Menu } from 'semantic-ui-react'
 import './style.css'
-import logo from './logo.svg';
+import logo from './logo.svg'
 
 class NavigationBar extends Component {
-  state = {  }
-  render() {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  render () {
     return (
       <Menu fixed='top' inverted>
         <Container>
@@ -17,12 +22,12 @@ class NavigationBar extends Component {
             />
             Mana
           </Menu.Item>
-          <Menu.Item as='a' href="/agenda">Agenda</Menu.Item>
-          <Menu.Item as='a' href="/grades" disabled>Grades</Menu.Item>
+          <Menu.Item as='a' href='/agenda'>Agenda</Menu.Item>
+          <Menu.Item as='a' href='/grades' disabled>Grades</Menu.Item>
         </Container>
       </Menu>
-    );
+    )
   }
 }
 
-export default NavigationBar;
+export default NavigationBar
